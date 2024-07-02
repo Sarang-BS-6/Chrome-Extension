@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Google Movie Search Enhancer",
+  "version": "1.0",
+  "description": "Enhances Google search results for movies with detailed information from TMDB.",
+  "permissions": ["activeTab", "storage"],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/search*"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
