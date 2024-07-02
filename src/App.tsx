@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { RootState } from './store';
 import { setCurrentMovie, addToHistory } from './store/movieSlice';
-import { getQueryFromStorage, setQueryInStorage, clearQueryInStorage } from './chromeUtils';
+import { getQueryFromStorage, clearQueryInStorage } from './chromeUtils';
 import './App.css';
 
-const TMDB_API_KEY = '0c305d00fc6b90d071218ade69513272'; 
+const TMDB_API_KEY = 'YOUR_TMDB_API_KEY';
 
 const App: React.FC = () => {
   const [query, setQuery] = useState<string>('');
@@ -26,22 +26,27 @@ const App: React.FC = () => {
     }
   }, []);
 
-  const fetchMovie = (query: string) => {
-    axios
-      .get(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${query}`)
-      .then((response) => {
-        if (response.data.results.length > 0) {
-          const movie = response.data.results[0];
-          dispatch(setCurrentMovie(movie));
-          dispatch(addToHistory(movie));
-          clearQueryInStorage(); // Clear the query after fetching
-        } else {
-          console.warn('No movies found.');
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching movie data:', error);
-      });
+  const fetchMovie = async (query: string) => {
+    try {
+      const movieResponse = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${query}`);
+      if (movieResponse.data.results.length > 0) {
+        const movie = movieResponse.data.results[0];
+
+        // Fetch movie credits to get the director's name
+        const creditsResponse = await axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${TMDB_API_KEY}`);
+        const director = creditsResponse.data.crew.find((member: any) => member.job === 'Director')?.name || 'Unknown';
+
+        const movieWithDirector = { ...movie, director };
+
+        dispatch(setCurrentMovie(movieWithDirector));
+        dispatch(addToHistory(movieWithDirector));
+        clearQueryInStorage(); // Clear the query after fetching
+      } else {
+        console.warn('No movies found.');
+      }
+    } catch (error) {
+      console.error('Error fetching movie data:', error);
+    }
   };
 
   const handleSearch = () => {
@@ -75,6 +80,7 @@ const App: React.FC = () => {
           <h2>{currentMovie.title}</h2>
           <p className="overview">{currentMovie.overview}</p>
           <p><strong>Release Date:</strong> {currentMovie.release_date}</p>
+          <p><strong>Director:</strong> {currentMovie.director}</p> {/* Display director */}
           {currentMovie.poster_path && (
             <img
               src={`https://image.tmdb.org/t/p/w200${currentMovie.poster_path}`}
