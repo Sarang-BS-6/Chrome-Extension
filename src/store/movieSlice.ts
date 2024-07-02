@@ -6,7 +6,7 @@ interface Movie {
   overview: string;
   release_date: string;
   poster_path: string | null;
-  director: string | null; // Add director field
+  director: string | null; 
 }
 
 interface MovieState {
