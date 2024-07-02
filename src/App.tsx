@@ -40,7 +40,7 @@ const App: React.FC = () => {
 
         dispatch(setCurrentMovie(movieWithDirector));
         dispatch(addToHistory(movieWithDirector));
-        clearQueryInStorage(); // Clear the query after fetching
+        clearQueryInStorage(); 
       } else {
         console.warn('No movies found.');
       }
