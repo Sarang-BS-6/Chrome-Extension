@@ -4,9 +4,9 @@ This Chrome extension enhances the Google search experience for movie queries by
 
 > FEATURES
 
-- Movie Search**: Search for movies directly from the extension.
-- Movie Details**: View detailed movie information, including title, release date, overview, and poster.
-- Search History**: Maintain and view a searchable history of movie queries.
+- Movie Search: Search for movies directly from the extension.
+- Movie Details: View detailed movie information, including title, release date, overview, and poster.
+- Search History: Maintain and view a searchable history of movie queries.
 
 > INSTALLATION
 
@@ -48,9 +48,9 @@ This Chrome extension enhances the Google search experience for movie queries by
    - The extension will fetch and display detailed information about the movie.
    - View Search History
       
-      The extension maintains a history of all movie queries.
-      You can view the search history in the popup.
-      Click on a movie title in the search history to view its details.
+      - The extension maintains a history of all movie queries.
+      - You can view the search history in the popup.
+      - Click on a movie title in the search history to view its details.
 
 
 
