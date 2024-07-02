@@ -10,10 +10,10 @@ This Chrome extension enhances the Google search experience for movie queries by
 
 > INSTALLATION
 
---> Prerequisites
+  Prerequisites
 
-- Ensure you have [Node.js](https://nodejs.org/) and npm installed on your machine.
-- Obtain a TMDB API key from [The Movie Database](https://www.themoviedb.org/documentation/api).
+   - Ensure you have [Node.js](https://nodejs.org/) and npm installed on your machine.
+   - Obtain a TMDB API key from [The Movie Database](https://www.themoviedb.org/documentation/api).
 
 > STEPS
 
