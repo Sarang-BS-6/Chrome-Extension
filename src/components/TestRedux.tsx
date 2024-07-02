@@ -13,6 +13,7 @@ const TestRedux: React.FC = () => {
     overview: 'This is a test movie.',
     release_date: '2024-01-01',
     poster_path: '/test.jpg',
+    director: 'Christopher Nolan',
   };
 
   const handleSetMovie = () => {
