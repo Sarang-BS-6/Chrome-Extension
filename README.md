@@ -53,5 +53,7 @@ This Chrome extension enhances the Google search experience for movie queries by
       - Click on a movie title in the search history to view its details.
 
 
+DATA FLOW :-
+
 
    ![Screenshot 2024-07-03 004318](https://github.com/Sarang-BS-6/Chrome-Extension/assets/162328333/1da717b2-6502-4751-b148-7e7cdd87bd95)
