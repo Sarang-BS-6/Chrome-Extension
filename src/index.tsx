@@ -5,7 +5,7 @@ import { store } from './store';
 import App from './App';
 import './index.css';
 
-//0c305d00fc6b90d071218ade69513272
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
